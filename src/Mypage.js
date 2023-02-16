@@ -7,8 +7,9 @@ import CustomInput from '../component/CustomInput';
 import HistoryItem from '../component/HistoryItem'
 import { ScrollView } from 'react-native';
 import profile from '../images/profile.png';
+import Logo from '../component/Logo';
 
-export default function Mypage () {
+export default function Mypage ({navigation}) {
   const dataList = data.products;
   const historyList = data.history;
 
@@ -20,9 +21,7 @@ export default function Mypage () {
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
         <View style={styles.container}>
-          <View style={styles.logoContainer}>
-            <Image style={styles.logo} source={logo}/>
-          </View>
+          <Logo/>
           <View style={styles.profileContainer}>
             <Image style={styles.profile} source={profile}/>
             <View style={styles.buttonContainer}>
@@ -38,7 +37,7 @@ export default function Mypage () {
           <FlatList
             keyExtractor={item => item.id}
             data={dataList}
-            renderItem={({item}) => <ProductItem title={item.title} cost={item.cost}/>}
+            renderItem={({item}) => <ProductItem title={item.title} onPress={()=>{navigation.navigate('Detail', {title:item.title, seller:item.seller, description:item.description})}}/>}
             numColumns={2}
           />
           <Text style={styles.title}>Trade HIstory</Text>
@@ -64,16 +63,6 @@ const styles = StyleSheet.create({
   },
   scrollView:{
     showsHorizontalScrollIndicator:'false'
-  },
-  logoContainer:{
-    width:300,
-    marginBottom:30,
-    marginTop:30
-  },
-  logo:{
-    width:150,
-    height:32,
-    resizeMode:'fill'
   },
   profileContainer:{
     display:'flex',
@@ -101,9 +90,10 @@ const styles = StyleSheet.create({
   uploadText:{
     color:'#fff',
     fontWeight:'bold',
-    fontSize:15,
+    fontSize:14,
     textAlign:'center',
-    lineHeight:35
+    lineHeight:14,
+    marginTop:8
   },
   removeButton:{
     width:180,
@@ -116,9 +106,10 @@ const styles = StyleSheet.create({
   removeText:{
     color:'#FFBC25',
     fontWeight:'bold',
-    fontSize:15,
+    fontSize:14,
     textAlign:'center',
-    lineHeight:35
+    lineHeight:14,
+    marginTop:8
   },
   modifyButton:{
     width:80,

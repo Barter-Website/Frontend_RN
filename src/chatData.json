@@ -1,0 +1,35 @@
+{
+    "chatList" : [
+      {
+        "id": 1,
+        "name": "bori1"
+      },
+      {
+        "id": 2,
+        "name": "bori2"
+      },
+      {
+        "id": 3,
+        "name": "bori3"
+      },
+      {
+        "id": 4,
+        "name": "bori4"
+      },
+      {
+        "id": 5,
+        "name": "bori5"
+      },
+      {
+        "id": 6,
+        "name": "bori6"
+      },
+      {
+        "id": 7,
+        "name": "bori7"
+      },
+      {
+        "id": 8,
+        "name": "bori8"
+      }]
+  }

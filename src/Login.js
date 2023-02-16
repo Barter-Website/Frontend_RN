@@ -16,7 +16,7 @@ export default function Login({navigation}) {
       <CustomInput text={"아이디"} onChangeText={text => setId(text)}/>
       <CustomInput text={"비밀번호"} onChangeText={text => setPw(text)}/>
       <Text style={styles.findPw}>비밀번호 찾기</Text>
-      <CustomButton style={styles.loginButton} text={"로그인"} onPress={()=>navigation.navigate('BottomNav')}/>
+      <CustomButton style={styles.loginButton} text={"로그인"} onPress={()=>navigation.navigate('StackNav')}/>
       <Text style={styles.signupText}>아직 회원이 아니신가요? <Text style={styles.signupButton} onPress={() => navigation.navigate('Signup')}>회원가입</Text></Text>
       <Image style={styles.logo} source={logo}/>
     </View>

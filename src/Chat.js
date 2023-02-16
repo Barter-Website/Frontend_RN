@@ -1,38 +1,33 @@
 import { Button, StyleSheet, Text, View, TextInput, Image, FlatList,SafeAreaView, TouchableOpacity, Modal } from 'react-native';
-import logo from '../images/logo.png'
 import { useState } from 'react';
-import categoryIcon from '../images/category.png';
 import searchIcon from '../images/search.png';
-import data from './data.json';
 import ProductItem from '../component/ProductItem';
 import { ScrollView } from 'react-native-gesture-handler';
-import CategoryButton from '../component/CategoryButton';
-import Category from './Category';
 import Logo from '../component/Logo';
+import chatData from './chatData.json';
+import ChatList from './ChatList';
 
-export default function Main ({navigation}) {
-  const dataList = data.products;
+export default function Chat ({navigation}) {
   const [search, setSearch] = useState('');
-  const [visibleModal, setVisibleModal] = useState(false);
+  const chatList = chatData.chatList;
 
   return (
-    <SafeAreaView style={visibleModal?styles.modalvisibleContainer:styles.container}>
+    <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView}>
-        <View style={visibleModal?styles.modalvisibleContainer:styles.container}>
+        <View style={styles.container}>
             <Logo/>
             <View style={styles.search}>
               <TextInput style={styles.input} placeholder={"Search"} onChangeText={text => setId(text)}></TextInput>
-              <TouchableOpacity onPress={()=>{setVisibleModal(true)}}><Image style={styles.icon} source={categoryIcon}/></TouchableOpacity>
             </View>
-            <TouchableOpacity onPress={()=>{}}><Image style={styles.searchIcon} source={searchIcon}/></TouchableOpacity>
-            <Text style={styles.title}>Recently Added Products</Text>
+            <View style={styles.IconContainer}>
+                <TouchableOpacity onPress={()=>{}}><Image style={styles.searchIcon} source={searchIcon}/></TouchableOpacity>
+            </View>
             <FlatList
+              style={styles.chatList}
               keyExtractor={item => item.id}
-              data={dataList}
-              renderItem={({item}) => <ProductItem title={item.title} seller={item.seller} onPress={()=>{navigation.navigate('Detail', {title:item.title, seller:item.seller, description:item.description})}}/>}
-              numColumns={2}
+              data={chatList}
+              renderItem={({item}) => <ChatList name={item.name} onPress={()=>{navigation.navigate('Chatting', {name:item.name})}}/>}
             />
-            <Category visible={visibleModal} onPress={()=>{setVisibleModal(false)}}/>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -46,12 +41,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  modalvisibleContainer: {
-    width:'100vw',
-    height:'100vh',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   scrollView:{
     showsHorizontalScrollIndicator:'false',
   },
@@ -60,12 +49,15 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     width:300
   },
+  IconContainer:{
+    position:'relative'
+  },
   searchIcon:{
-    position:'relative',
-    bottom:32,
-    left:80,
+    position:'absolute',
     width:24,
-    height:24
+    height:24,
+    bottom:10,
+    left:110
   },
   input:{
     width:340,
@@ -84,6 +76,9 @@ const styles = StyleSheet.create({
       fontWeight:'bold',
       fontSize:20,
       width:300
+  },
+  chatList:{
+    marginTop:10
   }
 });
 

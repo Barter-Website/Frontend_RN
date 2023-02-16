@@ -3,54 +3,69 @@
       {
         "id": 1,
         "title": "Fresh local tomatoes",
-        "cost": "100￦"
+        "seller":"bori",
+        "description":"description"
       },
       {
         "id": 2,
         "title": "tomatoes",
-        "cost": "200￦"
+        "seller":"bori",
+        "description":"description"
       },
       {
         "id": 3,
         "title": "Fresh local tomatoes",
-        "cost": "300￦"
+        "seller":"bori",
+        "description":"description"
       },
       {
         "id": 4,
         "title": "Fresh local tomatoes",
-        "cost": "400￦"
+        "seller":"bori",
+        "description":"description"
       },
       {
         "id": 5,
         "title": "Fresh local tomatoes",
-        "cost": "500￦"
+        "seller":"bori",
+        "description":"description"
       }
       ],
       "history" : [
       {
         "id": 1,
         "myProduct": "Fresh local tomatoes",
-        "exchangeProduct":"exchangeProduct"
+        "exchangeProduct":"exchangeProduct",
+        "seller":"bori",
+        "description":"description1"
       },
       {
         "id": 2,
         "myProduct": "tomatoes",
-        "exchangeProduct":"exchangeProduct"
+        "exchangeProduct":"exchangeProduct",
+        "seller":"bori",
+        "description":"description2"
       },
       {
         "id": 3,
         "myProduct": "Fresh local tomatoes",
-        "exchangeProduct":"exchangeProduct"
+        "exchangeProduct":"exchangeProduct",
+        "seller":"bori",
+        "description":"description3"
       },
       {
         "id": 4,
         "myProduct": "Fresh local tomatoes",
-        "exchangeProduct":"exchangeProduct"
+        "exchangeProduct":"exchangeProduct",
+        "seller":"bori",
+        "description":"description4"
       },
       {
         "id": 5,
         "myProduct": "Fresh local tomatoes",
-        "exchangeProduct":"exchangeProduct"
+        "exchangeProduct":"exchangeProduct",
+        "seller":"bori",
+        "description":"description5"
       }
       ]
   }

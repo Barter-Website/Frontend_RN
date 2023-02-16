@@ -1,13 +1,13 @@
-import { Image, Text, StyleSheet, View } from 'react-native';
+import { Image, Text, StyleSheet, View,TouchableOpacity } from 'react-native';
 import product from '../images/product.png'
 
 export default function ProductItem(props){
     return (
-        <View style={styles.container}>
+        <TouchableOpacity style={styles.container} onPress={props.onPress}>
           <Image style={styles.productImg} source={product}/>
+          <Text style={styles.seller}>{props.seller}</Text>
           <Text numberOfLines={1} ellipsizeMode="tail" style={styles.title}>{props.title}</Text>
-          <Text style={styles.cost}>{props.cost}</Text>
-        </View>
+        </TouchableOpacity>
     )
 }
 const styles = StyleSheet.create({
@@ -24,14 +24,13 @@ const styles = StyleSheet.create({
       marginTop:10,
       marginBottom:10
     },
-    title:{
-        fontSize:16,
+    seller:{
+        fontSize:14,
         width:110,
-        marginBottom:5,
         fontWeight:'bold'
     },
-    cost:{
-        fontSize:14,
+    title:{
+        fontSize:16,
         width:110,
         marginBottom:15,
         fontWeight:'bold'

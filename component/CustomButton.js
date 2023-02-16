@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         fontSize:20,
         fontWeight:'bold',
         textAlign:'center',
-        lineHeight:25,
+        lineHeight:20,
         marginTop:15
     }
   });
