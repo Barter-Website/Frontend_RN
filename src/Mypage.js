@@ -37,7 +37,7 @@ export default function Mypage ({navigation}) {
           <FlatList
             keyExtractor={item => item.id}
             data={dataList}
-            renderItem={({item}) => <ProductItem title={item.title} onPress={()=>{navigation.navigate('Detail', {title:item.title, seller:item.seller, description:item.description})}}/>}
+            renderItem={({item}) => <ProductItem title={item.title} like={item.like} onPress={()=>{navigation.navigate('Detail', {title:item.title, seller:item.seller, description:item.description})}}/>}
             numColumns={2}
           />
           <Text style={styles.title}>Trade HIstory</Text>

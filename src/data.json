@@ -4,31 +4,36 @@
         "id": 1,
         "title": "Fresh local tomatoes",
         "seller":"bori",
-        "description":"description"
+        "description":"description",
+        "like":true
       },
       {
         "id": 2,
         "title": "tomatoes",
         "seller":"bori",
-        "description":"description"
+        "description":"description",
+        "like":false
       },
       {
         "id": 3,
         "title": "Fresh local tomatoes",
         "seller":"bori",
-        "description":"description"
+        "description":"description",
+        "like":true
       },
       {
         "id": 4,
         "title": "Fresh local tomatoes",
         "seller":"bori",
-        "description":"description"
+        "description":"description",
+        "like":true
       },
       {
         "id": 5,
         "title": "Fresh local tomatoes",
         "seller":"bori",
-        "description":"description"
+        "description":"description",
+        "like":false
       }
       ],
       "history" : [

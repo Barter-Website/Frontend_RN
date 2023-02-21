@@ -29,7 +29,7 @@ export default function Main ({navigation}) {
             <FlatList
               keyExtractor={item => item.id}
               data={dataList}
-              renderItem={({item}) => <ProductItem title={item.title} seller={item.seller} onPress={()=>{navigation.navigate('Detail', {title:item.title, seller:item.seller, description:item.description})}}/>}
+              renderItem={({item}) => <ProductItem title={item.title} seller={item.seller} like={item.like} onPress={()=>{navigation.navigate('Detail', {title:item.title, seller:item.seller, description:item.description})}}/>}
               numColumns={2}
             />
             <Category visible={visibleModal} onPress={()=>{setVisibleModal(false)}}/>
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     height:24
   },
   input:{
-    width:340,
+    width:250,
     height:40,
     backgroundColor:'#F1F1F1',
     borderRadius:12,
