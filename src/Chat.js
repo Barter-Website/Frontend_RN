@@ -2,7 +2,7 @@ import { Button, StyleSheet, Text, View, TextInput, Image, FlatList,SafeAreaView
 import { useState } from 'react';
 import searchIcon from '../images/search.png';
 import ProductItem from '../component/ProductItem';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 import Logo from '../component/Logo';
 import chatData from './chatData.json';
 import ChatList from './ChatList';
@@ -13,7 +13,7 @@ export default function Chat ({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
             <Logo/>
             <View style={styles.search}>
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     left:110
   },
   input:{
-    width:340,
+    width:300,
     height:40,
     backgroundColor:'#F1F1F1',
     borderRadius:12,

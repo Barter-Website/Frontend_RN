@@ -5,7 +5,7 @@ import categoryIcon from '../images/category.png';
 import searchIcon from '../images/search.png';
 import data from './data.json';
 import ProductItem from '../component/ProductItem';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView } from 'react-native';
 import CategoryButton from '../component/CategoryButton';
 import Category from './Category';
 import Logo from '../component/Logo';
@@ -17,7 +17,7 @@ export default function Main ({navigation}) {
 
   return (
     <SafeAreaView style={visibleModal?styles.modalvisibleContainer:styles.container}>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={visibleModal?styles.modalvisibleContainer:styles.container}>
             <Logo/>
             <View style={styles.search}>
@@ -47,8 +47,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   modalvisibleContainer: {
-    width:'100vw',
-    height:'100vh',
+    minWidth:'100%',
+    minHeight:'100%',
     alignItems: 'center',
     justifyContent: 'center',
   },

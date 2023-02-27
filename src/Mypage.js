@@ -19,7 +19,7 @@ export default function Mypage ({navigation}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <Logo/>
           <View style={styles.profileContainer}>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     fontSize:14,
     textAlign:'center',
     lineHeight:14,
-    marginTop:8
+    marginTop:10
   },
   removeButton:{
     width:180,
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     fontSize:14,
     textAlign:'center',
     lineHeight:14,
-    marginTop:8
+    marginTop:9
   },
   modifyButton:{
     width:80,

@@ -2,13 +2,10 @@ import { Button, StyleSheet, Text, View, TextInput, Image, FlatList,SafeAreaView
 import { useState } from 'react';
 import data from './data.json';
 import { ScrollView } from 'react-native';
-import arrow from '../images/arrow.png';
 import product from '../images/product2.png';
 import CustomInput from '../component/CustomInput';
 import CategoryButton from '../component/CategoryButton';
 import photo from '../images/photo.png';
-import logo from '../images/logo.png'
-import CustomButton from '../component/CustomButton';
 import Logo from '../component/Logo';
 
 export default function Post () {
@@ -22,7 +19,7 @@ export default function Post () {
   const [selectedD, setSelectedD] = useState('');
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
             <Logo/>
             <TouchableOpacity style={styles.photo}><Image style={styles.icon}source={photo}/></TouchableOpacity>
@@ -58,8 +55,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
   },
-  scrollView:{
-  },
   photo:{
     width:90,
     height:90,
@@ -67,6 +62,7 @@ const styles = StyleSheet.create({
     borderColor:'#C4C4C4',
     borderWidth:2,
     justifyContent:'center',
+    alignItems:'center',
     marginRight:200,
   },
   icon:{

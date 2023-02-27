@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Image, Text, StyleSheet, View,TouchableOpacity } from 'react-native';
 import product from '../images/product.png';
 import heart from "../images/heart.png";
-import activeHeart from "../images/activeHeart.svg";
+import activeHeart from "../images/activeHeart.png";
 
 export default function ProductItem(props){
     const [isLike, setIsLike] = useState(props.like);
@@ -42,12 +42,14 @@ const styles = StyleSheet.create({
         borderRadius:'50%',
         borderColor:'#EAEAEA',
         borderWidth:1,
-        zIndex:2
+        zIndex:2,
+        alignItems:'center',
+        justifyContent:'center'
         
     },
     likeButton:{
-        width:16,
-        height:13,
+        width:15,
+        height:12,
         margin:'auto',
         objectFit:'fill'
     },

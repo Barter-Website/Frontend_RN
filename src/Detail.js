@@ -15,7 +15,7 @@ export default function Detail ({navigation:navigation,route: route}) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView style={styles.scrollView}>
+      <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
             <View style={styles.arrowContainer}>
                 <TouchableOpacity onPress={()=>navigation.navigate('BottomNav')}>
@@ -61,23 +61,30 @@ const styles = StyleSheet.create({
   },
   desContainer:{
     width:340,
-    minHeight:'calc(100vh - 435px)',
     backgroundColor:'#F3F3F3',
-    borderTopLeftRadius:30,
-    borderTopRightRadius:30,
-    padding:30,
-    position:'relative'
+    borderRadius:30,
+    position:'relative',
+    display:'flex',    
+    minHeight:'35%',
+    flexDirection:'column'
   },
   seller:{
+    marginTop:20,
+    paddingLeft:30,
     fontSize:12,
     fontWeight:'bold'
   },
   title:{
     fontSize:20,
+    paddingLeft:30,
     fontWeight:'bold'
   },
-  des:{
-    fontSize:14
+  desText:{
+    paddingLeft:30,
+    paddingRight:30,
+    fontSize:14,
+    minHeight:'40%',
+    marginBottom:80
   },
   chatButton:{
     width:100,
@@ -85,8 +92,9 @@ const styles = StyleSheet.create({
     backgroundColor:'#FFBC25',
     borderRadius:15,
     marginBottom:10,
-    marginLeft:180,
+    marginLeft:210,
     bottom:10,
+    marginRight:30,
     position:'absolute'
   },
   chatText:{
@@ -95,7 +103,7 @@ const styles = StyleSheet.create({
     fontSize:14,
     textAlign:'center',
     lineHeight:14,
-    marginTop:8
+    marginTop:9
   }
 });
 

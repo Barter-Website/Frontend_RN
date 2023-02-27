@@ -31,7 +31,7 @@ export default function Category (props) {
 }
 const styles=StyleSheet.create({
     back:{
-        zIndex:2,
+        zIndex:3,
         position:'absolute',
         width:'100%',
         height:'100%',
