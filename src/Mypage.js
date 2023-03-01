@@ -8,6 +8,7 @@ import HistoryItem from '../component/HistoryItem'
 import { ScrollView } from 'react-native';
 import profile from '../images/profile.png';
 import Logo from '../component/Logo';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function Mypage ({navigation}) {
   const dataList = data.products;
@@ -17,16 +18,44 @@ export default function Mypage ({navigation}) {
   const[pw, setPw] = useState('');
   const[pwCheck, setPwCheck] = useState('');
 
+  const [imageUrl, setImageUrl] = useState('');
+
+  const [status, requestPermission] = ImagePicker.useMediaLibraryPermissions();
+
+  const uploadImage = async () =>{
+    if(!status?.granted){
+      const permission = await requestPermission();
+      if(!permission.granted){
+        return null;
+      }
+    }
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: false,
+      quality: 1,
+      aspect: [1,1]
+    });
+    if (result.canceled){
+          return null;
+    }
+    console.log(result);
+    setImageUrl(result.uri);
+  };
+
+  const removeImage=()=>{
+    setImageUrl('')
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
           <Logo/>
           <View style={styles.profileContainer}>
-            <Image style={styles.profile} source={profile}/>
+            {imageUrl?<Image style={styles.profile} source={{url:imageUrl}}/>:<Image style={styles.profile} source={profile}/>}
             <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.uploadButton}><Text style={styles.uploadText}>이미지 업로드</Text></TouchableOpacity>
-              <TouchableOpacity style={styles.removeButton}><Text style={styles.removeText}>이미지 제거</Text></TouchableOpacity>
+              <TouchableOpacity style={styles.uploadButton} onPress={uploadImage}><Text style={styles.uploadText}>이미지 업로드</Text></TouchableOpacity>
+              <TouchableOpacity style={styles.removeButton} onPress={removeImage}><Text style={styles.removeText}>이미지 제거</Text></TouchableOpacity>
             </View>
           </View>
           <CustomInput text={"닉네임"} value={nickname}/>
@@ -72,7 +101,8 @@ const styles = StyleSheet.create({
   },
   profile:{
     width:100,
-    height:100
+    height:100,
+    borderRadius:'50%'
   },
   buttonContainer:{
     display:'flex',
@@ -93,7 +123,7 @@ const styles = StyleSheet.create({
     fontSize:14,
     textAlign:'center',
     lineHeight:14,
-    marginTop:10
+    marginTop:9
   },
   removeButton:{
     width:180,
@@ -117,7 +147,7 @@ const styles = StyleSheet.create({
     backgroundColor:'#FFBC25',
     borderRadius:15,
     marginBottom:10,
-    marginTop:10,
+    marginTop:9,
     marginLeft:220
   },
   title:{

@@ -7,6 +7,7 @@ import CustomInput from '../component/CustomInput';
 import CategoryButton from '../component/CategoryButton';
 import photo from '../images/photo.png';
 import Logo from '../component/Logo';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function Post () {
 
@@ -17,12 +18,40 @@ export default function Post () {
   const product = ["생활", "가구", "유아", "의류", "취미", "식품", "식물", "디지털기기"]
   const [selectedP, setSelectedP] =useState('');
   const [selectedD, setSelectedD] = useState('');
+
+  const [imageUrl, setImageUrl] = useState('');
+
+  const [status, requestPermission] = ImagePicker.useMediaLibraryPermissions();
+
+  const uploadImage = async () =>{
+    if(!status?.granted){
+      const permission = await requestPermission();
+      if(!permission.granted){
+        return null;
+      }
+    }
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: false,
+      quality: 1,
+      aspect: [1,1]
+    });
+    if (result.canceled){
+          return null;
+    }
+    console.log(result);
+    setImageUrl(result.uri);
+  };
+
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView style={styles.scrollView} showsVerticalScrollIndicator={false}>
         <View style={styles.container}>
             <Logo/>
-            <TouchableOpacity style={styles.photo}><Image style={styles.icon}source={photo}/></TouchableOpacity>
+            <TouchableOpacity style={styles.photo} onPress={uploadImage}>
+              {imageUrl?<Image style={styles.image} source={{url:imageUrl}}/>:<Image style={styles.icon}source={photo}/>}
+            </TouchableOpacity>
             <CustomInput text={"글 제목"}/>
             <View>
                 <Text style={styles.title}>내용</Text>
@@ -64,6 +93,11 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center',
     marginRight:200,
+  },
+  image:{
+    width:90,
+    height:90,
+    borderRadius:10,
   },
   icon:{
     width:30,
